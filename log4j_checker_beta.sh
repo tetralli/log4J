@@ -188,22 +188,6 @@ if [ "$JAVA" == "" ]; then
 fi
 
 
-echo 
-information "Check présence faille via egrep :"
-egrep -I -i -r '\$(\{|%7B)jndi:(ldap[s]?|rmi|dns|nis|iiop|corba|nds|http):/[^\n]+' /var/log
-information "---------------------------------"
-echo
-
-
-echo
-information " Dernier check pour Log4J :"
-ps aux | egrep '[l]og4j'
-find / -iname "log4j*"
-lsof | grep log4j
-grep -r --include *.[wj]ar "JndiLookup.class" / 2>&1 | grep matches
-information "---------------------------"
-echo
-
 echo
 warning "This script does not guarantee that you are not vulnerable, but is a strong hint."
 echo
